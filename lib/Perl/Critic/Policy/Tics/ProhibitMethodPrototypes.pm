@@ -5,7 +5,7 @@ package Perl::Critic::Policy::Tics::ProhibitMethodPrototypes;
 
 =head1 NAME
 
-Perl::Critic::Policy::Tics::ProhibitMethodPrototypes;
+Perl::Critic::Policy::Tics::ProhibitMethodPrototypes
 
 =head1 VERSION
 
@@ -13,19 +13,6 @@ version 0.001
 
 =head1 DESCRIPTION
 
-B<Attention would-be clever Perl writers (including Younger RJBS):>
-
-This does not do what you think:
-
-  sub do_something {
-    ...
-    sub do_subprocess {
-      ...
-    }
-    ...
-  }
-
-Either write your subs without nesting or use anonymous code references.
 
 =cut
 
@@ -44,6 +31,8 @@ sub applies_to       { 'PPI::Statement::Sub' }
 sub violates {
   my ($self, $elem, $doc) = @_;
 
+  warn "do not use this module";
+  return;
   return unless my $inner = $elem->find_first('PPI::Statement::Sub');
 
   # Must be a violation...
