@@ -1,11 +1,11 @@
 use strict;
 use warnings;
 
-package Perl::Critic::Policy::Tics::ProhibitNestedSubs;
+package Perl::Critic::Policy::Tics::ProhibitManyArrows;
 
 =head1 NAME
 
-Perl::Critic::Policy::Tics::ProhibitNestedSubs;
+Perl::Critic::Policy::Tics::ProhibitManyArrows;
 
 =head1 VERSION
 
@@ -13,19 +13,13 @@ version 0.001
 
 =head1 DESCRIPTION
 
-B<Attention would-be clever Perl writers (including Younger RJBS):>
+You are not clever if you do this:
 
-This does not do what you think:
+  my %hash = (key1=>value1=>key2=>value2=>key3=>'value3');
 
-  sub do_something {
-    ...
-    sub do_subprocess {
-      ...
-    }
-    ...
-  }
+You are even more not clever if you do this:
 
-Either write your subs without nesting or use anonymous code references.
+  my %hash = (key1=>value1=>key2=>value2=>key3=>value3=>);
 
 =cut
 
@@ -34,20 +28,33 @@ use base qw(Perl::Critic::Policy);
 
 our $VERSION = '0.001';
 
-my $DESCRIPTION = q{Nested named subroutine};
-my $EXPLANATION = q{Declaring a named sub inside another named sub does not prevent the inner sub from being global.};
+my $DESCRIPTION = q{Too many fat-arrow-separated values in a row};
+my $EXPLANATION = q{Fat arrows should separate pairs, not produce long chains
+of values};
 
-sub default_severity { $SEVERITY_HIGHEST     }
-sub default_themes   { qw(lax)               }
-sub applies_to       { 'PPI::Statement::Sub' }
+sub default_severity { $SEVERITY_MEDIUM       }
+sub default_themes   { qw(tics)               }
+sub applies_to       { 'PPI::Token::Operator' }
 
 sub violates {
   my ($self, $elem, $doc) = @_;
 
-  return unless my $inner = $elem->find_first('PPI::Statement::Sub');
+  return unless $elem eq '=>';
+  return if eval { $elem->sprevious_sibling->sprevious_sibling } eq '=>';
+
+  my $in_a_row = 1;
+
+  my $start = $elem;
+  while (my $next = eval { $start->snext_sibling->snext_sibling }) {
+    last unless $next eq '=>';
+    $in_a_row++;
+    $start = $next;
+  }
+
+  return unless $in_a_row > 2; # XXX: make it configurable
 
   # Must be a violation...
-  return $self->violation($DESCRIPTION, $EXPLANATION, $inner);
+  return $self->violation($DESCRIPTION, $EXPLANATION, $start);
 }
 
 =pod
