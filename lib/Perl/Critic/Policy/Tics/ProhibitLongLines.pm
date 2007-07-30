@@ -13,19 +13,8 @@ version 0.001
 
 =head1 DESCRIPTION
 
-B<Attention would-be clever Perl writers (including Younger RJBS):>
-
-This does not do what you think:
-
-  sub do_something {
-    ...
-    sub do_subprocess {
-      ...
-    }
-    ...
-  }
-
-Either write your subs without nesting or use anonymous code references.
+Please keep your code to about eighty columns wide, the One True Terminal
+Width.  Going over that occasionally is okay, but only once in a while.
 
 =cut
 
@@ -34,20 +23,20 @@ use base qw(Perl::Critic::Policy);
 
 our $VERSION = '0.001';
 
-my $DESCRIPTION = q{Nested named subroutine};
-my $EXPLANATION = q{Declaring a named sub inside another named sub does not prevent the inner sub from being global.};
+my $DESCRIPTION = q{Document contains overly-long lines.};
+my $EXPLANATION = q{Keep lines to about eighty columns wide.};
 
-sub default_severity { $SEVERITY_HIGHEST     }
-sub default_themes   { qw(lax)               }
-sub applies_to       { 'PPI::Statement::Sub' }
+sub default_severity { $SEVERITY_LOW   }
+sub default_themes   { qw(tics)        }
+sub applies_to       { 'PPI::Document' }
 
 sub violates {
   my ($self, $elem, $doc) = @_;
 
-  return unless my $inner = $elem->find_first('PPI::Statement::Sub');
+  return unless $elem->serialize =~ /^.{100,}?$/sm;
 
   # Must be a violation...
-  return $self->violation($DESCRIPTION, $EXPLANATION, $inner);
+  return $self->violation($DESCRIPTION, $EXPLANATION, $doc);
 }
 
 =pod
