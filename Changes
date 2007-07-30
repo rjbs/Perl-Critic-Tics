@@ -1,5 +1,8 @@
 This is the revision history for Perl-Critic-Tics
 
+0.003     2007-07-30
+          make ProhibitManyArrows configurable
+
 0.002     2007-07-30
           fix bug in long line detection
 
