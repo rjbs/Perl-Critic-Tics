@@ -52,6 +52,7 @@ sub default_themes   { qw(tics)               }
 sub applies_to       { 'PPI::Token::Operator' }
 
 sub supported_parameters { qw(max_allowed) }
+
 sub new {
   my ($class, %arg) = @_;
   my $self = $class->SUPER::new(%arg);
