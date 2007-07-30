@@ -9,7 +9,7 @@ Perl::Critic::Policy::Tics::ProhibitLongLines - 80 x 40 for life!
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 
@@ -21,7 +21,7 @@ Width.  Going over that occasionally is okay, but only once in a while.
 use Perl::Critic::Utils;
 use base qw(Perl::Critic::Policy);
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 my $DESCRIPTION = q{Document contains overly-long lines.};
 my $EXPLANATION = q{Keep lines to about eighty columns wide.};

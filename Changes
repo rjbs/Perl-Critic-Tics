@@ -1,4 +1,7 @@
 This is the revision history for Perl-Critic-Tics
 
-0.001     2007-08-01
+0.002     2007-07-30
+          fix bug in long line detection
+
+0.001     2007-07-30
           initial release
