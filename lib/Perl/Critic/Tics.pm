@@ -34,6 +34,22 @@ Take your pick:
 
 =back
 
+=head1 SEE ALSO
+
+L<Perl::Critic>, the driving force behind it all.  L<Perl::Critic::Lax>, the
+other half of things I don't like: things I don't like about core Perl::Critic
+rules.
+
+Other people have released their own tics:
+
+=over
+
+=item * L<Perl::Critic::Bangs>
+
+=item * L<Perl::Critic::Swift>
+
+=back
+
 =head1 AUTHOR
 
 Ricardo SIGNES <rjbs@cpan.org>
