@@ -1,11 +1,11 @@
 use strict;
 use warnings;
 
-package Perl::Critic::Policy::Tics::ProhibitBase;
+package Perl::Critic::Policy::Tics::ProhibitUseBase;
 
 =head1 NAME
 
-Perl::Critic::Policy::Tics::ProhibitBase;
+Perl::Critic::Policy::Tics::ProhibitUseBase - do not use base.pm
 
 =head1 VERSION
 

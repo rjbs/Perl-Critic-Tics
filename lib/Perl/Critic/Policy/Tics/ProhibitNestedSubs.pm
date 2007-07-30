@@ -5,7 +5,7 @@ package Perl::Critic::Policy::Tics::ProhibitNestedSubs;
 
 =head1 NAME
 
-Perl::Critic::Policy::Tics::ProhibitNestedSubs;
+Perl::Critic::Policy::Tics::ProhibitNestedSubs - sub never { sub correct {} }
 
 =head1 VERSION
 

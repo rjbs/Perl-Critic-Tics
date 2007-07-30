@@ -5,7 +5,7 @@ package Perl::Critic::Policy::Tics::ProhibitLongLines;
 
 =head1 NAME
 
-Perl::Critic::Policy::Tics::ProhibitLongLines;
+Perl::Critic::Policy::Tics::ProhibitLongLines - 80 x 40 for life!
 
 =head1 VERSION
 

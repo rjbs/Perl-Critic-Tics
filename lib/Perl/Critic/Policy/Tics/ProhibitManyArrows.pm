@@ -5,7 +5,7 @@ package Perl::Critic::Policy::Tics::ProhibitManyArrows;
 
 =head1 NAME
 
-Perl::Critic::Policy::Tics::ProhibitManyArrows;
+Perl::Critic::Policy::Tics::ProhibitManyArrows - (this => is => not => good)
 
 =head1 VERSION
 
