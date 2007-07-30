@@ -16,7 +16,7 @@ my @not_ok = (
 
 plan tests => @ok + @not_ok;
 
-my $policy = 'Tics::ProhibitBase';
+my $policy = 'Tics::ProhibitUseBase';
 
 for my $i (0 .. $#ok) {
   my $violation_count = pcritique($policy, \$ok[$i]);
