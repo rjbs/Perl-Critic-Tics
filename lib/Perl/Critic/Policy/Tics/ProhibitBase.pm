@@ -13,19 +13,16 @@ version 0.001
 
 =head1 DESCRIPTION
 
-B<Attention would-be clever Perl writers (including Younger RJBS):>
+  use base qw(Baseclass);
 
-This does not do what you think:
+You've seen that a hundred times, right?  That doesn't mean that it's a good
+idea.  It screws with C<$VERSION>, it (temporarily) clobbers your
+C<$SIG{__DIE__}>, it doesn't let you call the base class's C<import> method, it
+pushes to C<@INC> rather than replacing it, and it devotes much of its code to
+handling the nearly totally unused L<fields|fields> pragma -- but the multiple
+inheritence that pushing to C<@INC> sets up is not supported by fields.
 
-  sub do_something {
-    ...
-    sub do_subprocess {
-      ...
-    }
-    ...
-  }
-
-Either write your subs without nesting or use anonymous code references.
+There are a lot of ways around using C<base>.  Pick one.
 
 =cut
 
@@ -34,20 +31,20 @@ use base qw(Perl::Critic::Policy);
 
 our $VERSION = '0.001';
 
-my $DESCRIPTION = q{Nested named subroutine};
-my $EXPLANATION = q{Declaring a named sub inside another named sub does not prevent the inner sub from being global.};
+my $DESCRIPTION = q{Use of "base" pragma};
+my $EXPLANATION = q{Don't use base, set @INC or use a base.pm alternative.};
 
-sub default_severity { $SEVERITY_HIGHEST     }
-sub default_themes   { qw(lax)               }
-sub applies_to       { 'PPI::Statement::Sub' }
+sub default_severity { $SEVERITY_MEDIUM          }
+sub default_themes   { qw(tics)                  }
+sub applies_to       { 'PPI::Statement::Include' }
 
 sub violates {
   my ($self, $elem, $doc) = @_;
 
-  return unless my $inner = $elem->find_first('PPI::Statement::Sub');
+  return unless $elem->module eq 'base';
 
   # Must be a violation...
-  return $self->violation($DESCRIPTION, $EXPLANATION, $inner);
+  return $self->violation($DESCRIPTION, $EXPLANATION, $elem);
 }
 
 =pod

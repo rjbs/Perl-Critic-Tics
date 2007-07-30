@@ -25,7 +25,7 @@ my $DESCRIPTION = q{Nested named subroutine};
 my $EXPLANATION = q{Declaring a named sub inside another named sub does not prevent the inner sub from being global.};
 
 sub default_severity { $SEVERITY_HIGHEST     }
-sub default_themes   { qw(lax)               }
+sub default_themes   { qw(tics)              }
 sub applies_to       { 'PPI::Statement::Sub' }
 
 sub violates {
