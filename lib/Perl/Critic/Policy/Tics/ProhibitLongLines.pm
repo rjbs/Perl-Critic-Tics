@@ -1,11 +1,11 @@
 use strict;
 use warnings;
 
-package Perl::Critic::Policy::Tics::ProhibitNestedSubs;
+package Perl::Critic::Policy::Tics::ProhibitLongLines;
 
 =head1 NAME
 
-Perl::Critic::Policy::Tics::ProhibitNestedSubs;
+Perl::Critic::Policy::Tics::ProhibitLongLines;
 
 =head1 VERSION
 
