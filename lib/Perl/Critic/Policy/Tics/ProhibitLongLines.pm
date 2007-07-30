@@ -33,7 +33,7 @@ sub applies_to       { 'PPI::Document' }
 sub violates {
   my ($self, $elem, $doc) = @_;
 
-  return unless $elem->serialize =~ /^.{100,}?$/sm;
+  return unless $elem->serialize =~ /^.{100,}?$/m;
 
   # Must be a violation...
   return $self->violation($DESCRIPTION, $EXPLANATION, $doc);

@@ -7,6 +7,13 @@ use Test::More;
 
 my @ok = (
   q{$value = $given;},
+  q{
+$value = $given
+       + "this is a longish string that i use for filler"
+       .  $some_other_variable
+       . sprintf('%s%#b15', $given, $number)
+       ;
+},
 );
 
 my @not_ok = (
