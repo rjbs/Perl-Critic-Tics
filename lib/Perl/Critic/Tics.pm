@@ -11,7 +11,7 @@ Perl::Critic::Tics - policies for things that make me wince
 
 version 0.001
 
-  $Id: Lax.pm 1488 2007-07-28 00:01:30Z rjbs $
+  $Id$
 
 =cut
 
