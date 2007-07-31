@@ -9,7 +9,7 @@ Perl::Critic::Policy::Tics::ProhibitManyArrows - (this => is => not => good)
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 DESCRIPTION
 
@@ -66,7 +66,7 @@ sub new {
   bless $self => $class;
 }
 
-sub max_allowed { $_[0]->{max_allowed} }
+sub _max_allowed { $_[0]->{max_allowed} }
 
 sub violates {
   my ($self, $elem, $doc) = @_;
@@ -83,7 +83,7 @@ sub violates {
     $start = $next;
   }
 
-  return unless $in_a_row > $self->max_allowed; # XXX: make it configurable
+  return unless $in_a_row > $self->_max_allowed;
 
   # Must be a violation...
   return $self->violation($DESCRIPTION, $EXPLANATION, $start);
