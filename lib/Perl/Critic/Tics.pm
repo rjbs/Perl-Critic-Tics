@@ -9,13 +9,11 @@ Perl::Critic::Tics - policies for things that make me wince
 
 =head1 VERSION
 
-version 0.003
-
-  $Id$
+version 0.004
 
 =cut
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 =head1 DESCRIPTION
 

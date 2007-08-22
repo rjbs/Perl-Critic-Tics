@@ -8,6 +8,6 @@ author        ('Ricardo SIGNES <rjbs@cpan.org>');
 license       ('perl');
 version_from  ('lib/Perl/Critic/Tics.pm');
 
-requires('Perl::Critic'     => 0.21);
+requires('Perl::Critic'     => 1.07); # to get core ProhibitNestedSubs
 
 WriteAll();
