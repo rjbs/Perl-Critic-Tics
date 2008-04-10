@@ -10,4 +10,6 @@ version_from  ('lib/Perl/Critic/Tics.pm');
 
 requires('Perl::Critic'     => 1.07); # to get core ProhibitNestedSubs
 
+author_tests('xt');
+
 WriteAll();

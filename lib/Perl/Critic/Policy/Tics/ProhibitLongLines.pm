@@ -9,7 +9,7 @@ Perl::Critic::Policy::Tics::ProhibitLongLines - 80 x 40 for life!
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ There are three configuration options for this policy:
 use Perl::Critic::Utils;
 use base qw(Perl::Critic::Policy);
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 sub default_severity { $SEVERITY_LOW   }
 sub default_themes   { qw(tics)        }
