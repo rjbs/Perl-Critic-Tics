@@ -1,5 +1,8 @@
 This is the revision history for Perl-Critic-Tics
 
+0.005     2008-04-09
+          correct packaging errors
+
 0.004     2007-08-21
           ProhibitNestedSubs has become part of the core, removed from Tics
 

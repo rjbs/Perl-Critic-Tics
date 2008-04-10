@@ -9,7 +9,7 @@ Perl::Critic::Policy::Tics::ProhibitUseBase - do not use base.pm
 
 =head1 VERSION
 
-version 0.001
+version 0.004
 
 =head1 DESCRIPTION
 
@@ -44,7 +44,7 @@ right for you.
 use Perl::Critic::Utils;
 use base qw(Perl::Critic::Policy);
 
-our $VERSION = '0.001';
+our $VERSION = '0.004';
 
 my $DESCRIPTION = q{Use of "base" pragma};
 my $EXPLANATION = q{Don't use base, set @INC or use a base.pm alternative.};
