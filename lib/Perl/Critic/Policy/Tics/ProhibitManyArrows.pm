@@ -9,7 +9,7 @@ Perl::Critic::Policy::Tics::ProhibitManyArrows - (this => is => not => good)
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 DESCRIPTION
 
@@ -41,7 +41,7 @@ values:
 use Perl::Critic::Utils;
 use base qw(Perl::Critic::Policy);
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 my $DESCRIPTION = q{Too many fat-arrow-separated values in a row};
 my $EXPLANATION = q{Fat arrows should separate pairs, not produce long chains

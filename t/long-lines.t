@@ -22,7 +22,7 @@ my @not_ok = (
   [ 1, join("\n", ($snippet x 20), ($snippet x 40), ($snippet) x 200) ],
 );
 
-plan tests => @ok + @not_ok;
+plan tests => @ok + @not_ok + 1;
 
 my $policy = 'Tics::ProhibitLongLines';
 
@@ -38,3 +38,15 @@ for my $i (0 .. $#not_ok) {
   my $viol = pcritique($policy, \$code);
   is($viol, $count, "\$not_ok[$i] is no good ($viol violations)");
 }
+
+my $data_long = <<'END_DATA';
+my $x = 'short';
+my $y = 'short, too';
+
+__DATA__
+END_DATA
+
+$data_long .= ('x' x 200);
+
+my $violation_count = pcritique($policy, \$data_long);
+is($violation_count, 0, "nothing wrong with long lines in __DATA__");

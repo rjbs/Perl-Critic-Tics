@@ -9,7 +9,7 @@ Perl::Critic::Policy::Tics::ProhibitLongLines - 80 x 40 for life!
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ There are three configuration options for this policy:
 use Perl::Critic::Utils;
 use base qw(Perl::Critic::Policy);
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 sub default_severity { $SEVERITY_LOW   }
 sub default_themes   { qw(tics)        }
@@ -75,6 +75,9 @@ sub new {
 
 sub violates {
   my ($self, $elem, $doc) = @_;
+
+  $elem->prune('PPI::Token::Data');
+  $elem->prune('PPI::Token::End');
 
   my @lines = split /(?:\x0d\x0a|\x0a\x0d|\x0d|\x0a)/, $elem->serialize;
 
