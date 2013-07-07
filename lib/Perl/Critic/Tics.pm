@@ -1,19 +1,7 @@
 use strict;
 use warnings;
-
 package Perl::Critic::Tics;
-
-=head1 NAME
-
-Perl::Critic::Tics - policies for things that make me wince
-
-=head1 VERSION
-
-version 0.006
-
-=cut
-
-our $VERSION = '0.006';
+# ABSTRACT: policies for things that make me wince
 
 =head1 DESCRIPTION
 
@@ -40,24 +28,11 @@ rules.
 
 Other people have released their own tics:
 
-=over
-
-=item * L<Perl::Critic::Bangs>
-
-=item * L<Perl::Critic::Swift>
-
-=back
-
-=head1 AUTHOR
-
-Ricardo SIGNES <rjbs@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2007 Ricardo SIGNES.
-
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
+=for :list
+* L<Perl::Critic::Bangs>
+* L<Perl::Critic::Itch>
+* L<Perl::Critic::Pulp>
+* L<Perl::Critic::Swift>
 
 =cut
 

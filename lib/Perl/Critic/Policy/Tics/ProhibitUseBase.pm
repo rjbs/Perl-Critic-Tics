@@ -1,15 +1,7 @@
 use strict;
 use warnings;
-
 package Perl::Critic::Policy::Tics::ProhibitUseBase;
-
-=head1 NAME
-
-Perl::Critic::Policy::Tics::ProhibitUseBase - do not use base.pm
-
-=head1 VERSION
-
-version 0.006
+# ABSTRACT: do not use base.pm
 
 =head1 DESCRIPTION
 
@@ -42,9 +34,7 @@ right for you.
 =cut
 
 use Perl::Critic::Utils;
-use base qw(Perl::Critic::Policy);
-
-our $VERSION = '0.006';
+use parent qw(Perl::Critic::Policy);
 
 my $DESCRIPTION = q{Use of "base" pragma};
 my $EXPLANATION = q{Don't use base, set @INC or use a base.pm alternative.};
@@ -61,20 +51,5 @@ sub violates {
   # Must be a violation...
   return $self->violation($DESCRIPTION, $EXPLANATION, $elem);
 }
-
-=pod
-
-=head1 AUTHOR
-
-Ricardo SIGNES <rjbs@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2007 Ricardo SIGNES.
-
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
-
-=cut
 
 1;

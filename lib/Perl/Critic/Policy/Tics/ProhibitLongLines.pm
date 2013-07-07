@@ -1,15 +1,7 @@
 use strict;
 use warnings;
-
 package Perl::Critic::Policy::Tics::ProhibitLongLines;
-
-=head1 NAME
-
-Perl::Critic::Policy::Tics::ProhibitLongLines - 80 x 40 for life!
-
-=head1 VERSION
-
-version 0.006
+# ABSTRACT: 80 x 40 for life!
 
 =head1 DESCRIPTION
 
@@ -35,9 +27,7 @@ There are three configuration options for this policy:
 =cut
 
 use Perl::Critic::Utils;
-use base qw(Perl::Critic::Policy);
-
-our $VERSION = '0.006';
+use parent qw(Perl::Critic::Policy);
 
 sub default_severity { $SEVERITY_LOW   }
 sub default_themes   { qw(tics)        }
@@ -133,21 +123,5 @@ sub violates {
   sub _set_location { my ($self, $pos) = @_; $self->{__PACKAGE__}{pos} = $pos; }
   sub location { $_[0]->{__PACKAGE__}{pos} }
 }
-
-
-=pod
-
-=head1 AUTHOR
-
-Ricardo SIGNES <rjbs@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2007 Ricardo SIGNES.
-
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
-
-=cut
 
 1;

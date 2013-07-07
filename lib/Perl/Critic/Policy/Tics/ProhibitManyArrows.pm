@@ -1,15 +1,7 @@
 use strict;
 use warnings;
-
 package Perl::Critic::Policy::Tics::ProhibitManyArrows;
-
-=head1 NAME
-
-Perl::Critic::Policy::Tics::ProhibitManyArrows - (this => is => not => good)
-
-=head1 VERSION
-
-version 0.006
+# ABSTRACT: (this => is => not => good)
 
 =head1 DESCRIPTION
 
@@ -39,9 +31,7 @@ values:
 =cut
 
 use Perl::Critic::Utils;
-use base qw(Perl::Critic::Policy);
-
-our $VERSION = '0.006';
+use parent qw(Perl::Critic::Policy);
 
 my $DESCRIPTION = q{Too many fat-arrow-separated values in a row};
 my $EXPLANATION = q{Fat arrows should separate pairs, not produce long chains
@@ -88,20 +78,5 @@ sub violates {
   # Must be a violation...
   return $self->violation($DESCRIPTION, $EXPLANATION, $start);
 }
-
-=pod
-
-=head1 AUTHOR
-
-Ricardo SIGNES <rjbs@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2007 Ricardo SIGNES.
-
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
-
-=cut
 
 1;
