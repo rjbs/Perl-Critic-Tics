@@ -77,6 +77,9 @@ sub violates {
   my $base  = $self->{base_max};
   my $limit = $self->{hard_max};
 
+  my $top = $elem->top();
+  my $fn  = $top->can('filename') ? $top->filename() : undef;
+
   LINE: for my $ln (1 .. @lines) {
     my $length = length $lines[ $ln - 1 ];
 
@@ -90,7 +93,7 @@ sub violates {
         $self->get_severity,
       );
 
-      $viol->_set_location([ $ln, 1, 1 ]);
+      $viol->_set_location([ $ln, 1, $ln, 1, $fn ]);
 
       push @hard_violations, $viol;
     } else {
@@ -101,7 +104,7 @@ sub violates {
         $self->get_severity,
       );
 
-      $viol->_set_location([ $ln, 1, 1 ]);
+      $viol->_set_location([ $ln, 1, $ln, 1, $fn ]);
 
       push @soft_violations, $viol;
     }
