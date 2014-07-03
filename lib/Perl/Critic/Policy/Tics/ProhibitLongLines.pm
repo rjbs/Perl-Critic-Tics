@@ -93,7 +93,7 @@ sub violates {
         $self->get_severity,
       );
 
-      $viol->_set_location([ $ln, 1, 1, $ln, $fn ]);
+      $viol->_set_location([ $ln, 1, 1, $ln, $fn ], $lines[ $ln - 1 ]);
 
       push @hard_violations, $viol;
     } else {
@@ -104,7 +104,7 @@ sub violates {
         $self->get_severity,
       );
 
-      $viol->_set_location([ $ln, 1, 1, $ln, $fn ]);
+      $viol->_set_location([ $ln, 1, 1, $ln, $fn ], $lines[ $ln - 1 ]);
 
       push @soft_violations, $viol;
     }
@@ -123,8 +123,13 @@ sub violates {
 {
   package Perl::Critic::Tics::Violation::VirtualPos;
   BEGIN {require Perl::Critic::Violation; our @ISA = 'Perl::Critic::Violation';}
-  sub _set_location { my ($self, $pos) = @_; $self->{__PACKAGE__}{pos} = $pos; }
+  sub _set_location {
+    my ($self, $pos, $line) = @_;
+    $self->{__PACKAGE__}{pos}  = $pos;
+    $self->{__PACKAGE__}{line} = $line;
+  }
   sub location { $_[0]->{__PACKAGE__}{pos} }
+  sub source   { $_[0]->{__PACKAGE__}{line} }
 }
 
 1;
