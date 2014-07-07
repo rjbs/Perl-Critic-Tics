@@ -121,7 +121,8 @@ sub violates {
 }
 
 {
-  package Perl::Critic::Tics::Violation::VirtualPos;
+  package # hide
+    Perl::Critic::Tics::Violation::VirtualPos;
   BEGIN {require Perl::Critic::Violation; our @ISA = 'Perl::Critic::Violation';}
   sub _set_location {
     my ($self, $pos, $line) = @_;
