@@ -93,7 +93,7 @@ sub violates {
         $self->get_severity,
       );
 
-      $viol->_set_location([ $ln, 1, $ln, 1, $fn ]);
+      $viol->_set_location([ $ln, 1, 1, $ln, $fn ]);
 
       push @hard_violations, $viol;
     } else {
@@ -104,7 +104,7 @@ sub violates {
         $self->get_severity,
       );
 
-      $viol->_set_location([ $ln, 1, $ln, 1, $fn ]);
+      $viol->_set_location([ $ln, 1, 1, $ln, $fn ]);
 
       push @soft_violations, $viol;
     }
