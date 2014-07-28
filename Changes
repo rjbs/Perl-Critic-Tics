@@ -2,6 +2,10 @@ This is the revision history for Perl-Critic-Tics
 
 {{$NEXT}}
 
+0.009     2014-07-28 15:20:01-04:00 America/New_York
+        - fix reported line number in ProhibitLongLines
+          (thanks Kent Frederic and Oliver Trosien)
+
 0.008     2013-12-28 22:30:24 America/New_York
         - hopefully avoid undef warnings by hacking a hack on top of a hack
           [rt.perl.org #74896]
